@@ -2,7 +2,6 @@ package com.mtk.employee_management.controller;
 
 import com.mtk.employee_management.dto.EmployeeDto;
 import com.mtk.employee_management.service.EmployeeService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +18,7 @@ public class EmployeeController {
     private final EmployeeService service;
 
     @PostMapping("/create")
-    public ResponseEntity<EmployeeDto> handleCreateEmployee(@Valid @RequestBody EmployeeDto dto) {
+    public ResponseEntity<EmployeeDto> handleCreateEmployee(@RequestBody EmployeeDto dto) {
         EmployeeDto emp = service.createEmployee(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(emp);
     }
@@ -45,6 +44,6 @@ public class EmployeeController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> handleDeleteEmployee(@PathVariable("id") Long id) {
         service.deleteEmployee(id);
-        return ResponseEntity.ok("Employee deleted successfully.");
+        return ResponseEntity.ok().body("Employee deleted successfully.");
     }
 }
