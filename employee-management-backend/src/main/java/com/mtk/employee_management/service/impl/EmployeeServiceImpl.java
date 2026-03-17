@@ -1,17 +1,13 @@
 package com.mtk.employee_management.service.impl;
 
 import com.mtk.employee_management.common.constant.ErrorCode;
-import com.mtk.employee_management.common.response.Basic;
-import com.mtk.employee_management.common.response.ResponseFactory;
+import com.mtk.employee_management.common.exception.CommonException;
 import com.mtk.employee_management.dto.EmployeeDto;
 import com.mtk.employee_management.entity.Employee;
-import com.mtk.employee_management.common.exception.CommonException;
 import com.mtk.employee_management.mapper.EmployeeMapper;
 import com.mtk.employee_management.repository.EmployeeRepo;
 import com.mtk.employee_management.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,8 +23,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeDto createEmployee(EmployeeDto dto) {
         Employee emp = mapper.toEntity(dto);
-        Employee employee = repo.save(emp);
-        return mapper.toDto(employee);
+        return mapper.toDto(repo.save(emp));
     }
 
     @Override

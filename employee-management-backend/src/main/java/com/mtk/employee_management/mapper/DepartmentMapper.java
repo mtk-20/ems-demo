@@ -7,18 +7,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class DepartmentMapper {
 
-    public static DepartmentDto toDto(Department department) {
+    public DepartmentDto toDto(Department department) {
         return new DepartmentDto(
                 department.getId(),
                 department.getName(),
                 department.getDescription());
     }
 
-    public static Department toEntity(DepartmentDto departmentDto) {
+    public Department toEntity(DepartmentDto departmentDto) {
         return new Department(
                 departmentDto.getId(),
                 departmentDto.getName(),
                 departmentDto.getDescription());
     }
-
 }
