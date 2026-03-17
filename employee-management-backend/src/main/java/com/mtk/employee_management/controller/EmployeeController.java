@@ -4,6 +4,7 @@ import com.mtk.employee_management.dto.EmployeeDto;
 import com.mtk.employee_management.service.EmployeeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +19,9 @@ public class EmployeeController {
     private final EmployeeService service;
 
     @PostMapping("/create")
-    public ResponseEntity<?> handleCreateEmployee(@Valid @RequestBody EmployeeDto dto) {
-        return service.createEmployee(dto);
+    public ResponseEntity<EmployeeDto> handleCreateEmployee(@Valid @RequestBody EmployeeDto dto) {
+        EmployeeDto emp = service.createEmployee(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(emp);
     }
 
     @GetMapping("/by-id/{id}")

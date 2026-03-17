@@ -23,14 +23,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepo repo;
     private final EmployeeMapper mapper;
-    private final ResponseFactory factory;
 
     @Override
-    public ResponseEntity<Basic> createEmployee(EmployeeDto dto) {
+    public EmployeeDto createEmployee(EmployeeDto dto) {
         Employee emp = mapper.toEntity(dto);
         Employee employee = repo.save(emp);
-        EmployeeDto empDto =  mapper.toDto(employee);
-        return factory.buildSuccess(HttpStatus.CREATED, empDto, ErrorCode.OK, "Employee Created.");
+        return mapper.toDto(employee);
     }
 
     @Override
