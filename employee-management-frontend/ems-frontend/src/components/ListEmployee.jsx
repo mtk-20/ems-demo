@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { deleteEmployee, getEmployees } from "../service/EmployeeService";
 import { useNavigate } from "react-router-dom";
 
@@ -24,7 +24,7 @@ const ListEmployee = () => {
     navigator("/add-employee");
   }
 
-  function  handleUpdateEmployee(id) {
+  function handleUpdateEmployee(id) {
     navigator(`/update-employee/${id}`)
   }
 

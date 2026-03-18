@@ -1,7 +1,7 @@
 .header-container {
   display: flex;
-  justify-content: space-between; 
-  align-items: center;          
+  justify-content: space-between;
+  align-items: center;
   padding: 10px;
 }
 
@@ -12,4 +12,18 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+#name {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  font-size: 1.4rem;
+  transition: opacity 0.3s;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+#name:hover {
+  opacity: 0.5;
 }
