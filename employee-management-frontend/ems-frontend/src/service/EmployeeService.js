@@ -4,7 +4,7 @@ const BASE_URL_EMPLOYEE = "http://localhost:8080/api/employees";
 
 export const getEmployees = () => axios.get(BASE_URL_EMPLOYEE);
 
-export const createEmployees = (e) => axios.post(`${BASE_URL_EMPLOYEE}/create`, e);
+export const createEmployee = (e) => axios.post(`${BASE_URL_EMPLOYEE}/create`, e);
 
 export const getEmployeeId = (id) => axios.get(`${BASE_URL_EMPLOYEE}/by-id/` + id);
 

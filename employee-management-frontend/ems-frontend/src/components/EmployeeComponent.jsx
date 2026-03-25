@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createEmployees, getEmployeeId, updateEmployee } from "../service/EmployeeService";
+import { createEmployee, getEmployeeId, updateEmployee } from "../service/EmployeeService";
 import { useNavigate, useParams } from "react-router-dom";
 
 const EmployeeComponent = () => {
@@ -14,10 +14,10 @@ const EmployeeComponent = () => {
   const navigator = useNavigate();
   const { id } = useParams();
 
+  // data from API to show in update form
   useEffect(() => {
     if (id) {
-      getEmployeeId(id)
-        .then((r) => {
+      getEmployeeId(id).then((r) => {
           setFirstName(r.data.firstName), setLastName(r.data.lastName), setEmail(r.data.email);
         }).catch((err) => console.error(err));
     }
@@ -30,13 +30,13 @@ const EmployeeComponent = () => {
     if (id) {
       updateEmployee(id, emp).then((r) => {
         console.log(r.data);
-        navigator("/");
+        navigator("/employees");
       }).catch(err => console.error(err));
     }
     else {
-      createEmployees(emp).then((r) => {
+      createEmployee(emp).then((r) => {
         console.log(r.data);
-        navigator("/");
+        navigator("/employees");
       }).catch(err => console.error(err));
     }
   }
@@ -51,9 +51,9 @@ const EmployeeComponent = () => {
 
   function pageButton() {
     if (id) {
-      return <button type="button" className="btn btn-success btn-lg" onClick={handleSaveOrUpdateEmployee} >Update Employee</button>
+      return <button type="button" className="btn btn-success" onClick={handleSaveOrUpdateEmployee} >Update</button>
     } else {
-      return <button type="button" className="btn btn-success btn-lg" onClick={handleSaveOrUpdateEmployee} >Save Employee</button>
+      return <button type="button" className="btn btn-success" onClick={handleSaveOrUpdateEmployee} >Save</button>
     }
   }
 
@@ -84,9 +84,9 @@ const EmployeeComponent = () => {
                   <input id="email" type="email" name="email" placeholder="Enter email address"
                     className="form-control form-control-lg" value={email} onChange={handleEmail} />
                 </div>
- 
-                <div className="d-grid">{pageButton()}</div>
-                
+
+                <div className="d-grid w-50 mx-auto">{pageButton()}</div>
+
               </form>
             </div>
           </div>
