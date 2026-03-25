@@ -1,7 +1,6 @@
 package com.mtk.employee_management.controller;
 
 import com.mtk.employee_management.dto.DepartmentDto;
-import com.mtk.employee_management.dto.EmployeeDto;
 import com.mtk.employee_management.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -47,5 +46,4 @@ public class DepartmentController {
         service.deleteDepartment(id);
         return ResponseEntity.ok().body("Department deleted successfully.");
     }
-
 }

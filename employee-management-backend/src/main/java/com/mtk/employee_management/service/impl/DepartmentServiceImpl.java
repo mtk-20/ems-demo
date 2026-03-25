@@ -41,7 +41,7 @@ public class DepartmentServiceImpl implements DepartmentService{
     @Override
     public DepartmentDto updateDepartment(Long id, DepartmentDto dto) {
         Department department = repo.findById(id).orElseThrow(() -> new CommonException(ErrorCode.NOT_FOUND, "Department Not Found!"));
-        department.setName(dto.getName());
+        department.setName(dto.getDeptName());
         department.setDescription(dto.getDescription());
         return mapper.toDto(repo.save(department));
     }
